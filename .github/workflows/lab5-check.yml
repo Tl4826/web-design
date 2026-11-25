@@ -79,3 +79,13 @@ jobs:
           curl -fsS http://localhost:3002/login > /dev/null
           code=$(curl -s -o /dev/null -w '%{http_code}' http://localhost:3002/dashboard)
           case "$code" in 302|303|307|308) ;; *) echo "Expected login redirect, got $code"; exit 1;; esac
+      - name: Install browser test dependencies
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: End-to-end dashboard checks
+        run: |
+          npm run start -- --port 3002 > /tmp/dashboard-e2e.log 2>&1 &
+          trap 'kill $(jobs -p) 2>/dev/null || true; cat /tmp/dashboard-e2e.log' EXIT
+          curl --retry 20 --retry-connrefused --retry-delay 1 -fsS http://localhost:3002/ > /dev/null
+          node scripts/e2e.mjs
