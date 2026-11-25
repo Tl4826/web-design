@@ -1,15 +1,95 @@
-<!DOCTYPE html>
-<html lang="vi">
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trang chủ của mình</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thanh | Software Engineering Portfolio</title>
+  <meta name="title" content="Thanh | Software Engineering Portfolio">
+  <meta name="description" content="Explore Thanh's web development and software engineering learning projects.">
+  <meta name="keywords" content="portfolio, software engineering, web development, Tailwind CSS">
+  <meta name="author" content="Thanh">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Thanh | Software Engineering Portfolio">
+  <meta property="og:description" content="Web development and software engineering learning projects.">
+  <meta property="og:url" content="https://tl4826.github.io/web-design/">
+  <meta property="og:image" content="https://tl4826.github.io/web-design/banner.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Thanh | Software Engineering Portfolio">
+  <meta name="twitter:description" content="Web development and software engineering learning projects.">
+  <meta name="twitter:image" content="https://tl4826.github.io/web-design/banner.svg">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="manifest" href="./site.webmanifest">
 </head>
-<body>
-  <div class="flex flex-row justify-center items-center p-12">
-    <h1 class="text-5xl text-green-300 animate-bounce">Hello, Tailwind CSS</h1>
-  </div>
-
-  <script type="module" src="/src/scripts/application.js"></script>
+<body class="bg-white text-slate-800 antialiased">
+<header class="border-b border-teal-100 bg-white">
+  <nav aria-label="Main navigation" class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-5">
+    <a class="text-xl font-bold text-teal-700" href="#home">Thanh<span class="text-slate-500">.</span></a>
+    <div class="flex flex-wrap gap-4 text-sm font-medium sm:gap-6">
+      <a class="hover:text-teal-700" href="#about-me">About</a>
+      <a class="hover:text-teal-700" href="#projects">Projects</a>
+      <a class="hover:text-teal-700" href="#skills">Skills</a>
+      <a class="hover:text-teal-700" href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+<main>
+  <section id="home" class="hero flex min-h-[85vh] items-center px-6 py-20">
+    <div class="mx-auto w-full max-w-6xl">
+      <p class="banner-text mb-5 font-semibold uppercase tracking-widest text-teal-700">Software engineering student</p>
+      <h1 class="banner-text max-w-4xl text-4xl font-bold leading-tight sm:text-6xl lg:text-7xl">Hi, my name is <span class="text-teal-700">Thanh.</span><br>I build for the web.</h1>
+      <p class="banner-text mt-6 max-w-xl text-lg text-slate-600">Learning to turn ideas into useful, accessible web experiences.</p>
+      <a href="#about-me" class="banner-cta mt-8 inline-block border-2 border-teal-700 px-7 py-3 font-semibold text-teal-700 transition hover:bg-teal-700 hover:text-white">Know more</a>
+    </div>
+  </section>
+  <section id="about-me" class="bg-teal-700 px-6 py-24 text-white">
+    <div class="mx-auto max-w-5xl">
+      <h2 class="section-title mb-12 text-center text-3xl font-bold uppercase sm:text-4xl">About me</h2>
+      <div class="grid items-center gap-10 md:grid-cols-[1fr_2fr]">
+        <div class="section-content mx-auto flex aspect-square w-44 items-center justify-center rounded-3xl border-2 border-teal-300 bg-teal-800 text-6xl font-bold" aria-label="Thanh initials">T</div>
+        <div class="section-content">
+          <p class="text-lg leading-relaxed">I am a software engineering student interested in building practical web applications. I enjoy learning frontend technologies, experimenting with user interfaces, and improving my programming skills through hands-on projects.</p>
+          <a class="mt-6 inline-block border-2 border-white px-6 py-3 font-semibold transition hover:bg-white hover:text-teal-700" href="#skills">Explore my skills</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="projects" class="px-6 py-24">
+    <div class="mx-auto max-w-5xl">
+      <h2 class="section-title mb-10 text-center text-3xl font-bold uppercase sm:text-4xl">Projects</h2>
+      <div class="grid gap-6 md:grid-cols-2">
+        <article class="section-content rounded-2xl border border-slate-200 p-7 shadow-sm">
+          <p class="mb-3 text-sm font-semibold text-teal-700">Lab 1 · GitHub Flow</p><h3 class="text-2xl font-bold">Coming Soon website</h3>
+          <p class="my-4 text-slate-600">A static landing page deployed with GitHub Pages, practicing commits, branches and pull requests.</p>
+          <a class="font-semibold text-teal-700 underline" href="https://github.com/Tl4826/Tl4826.github.io">Source code</a>
+        </article>
+        <article class="section-content rounded-2xl border border-slate-200 p-7 shadow-sm">
+          <p class="mb-3 text-sm font-semibold text-teal-700">Lab 4 · Responsive Web</p><h3 class="text-2xl font-bold">Personal portfolio</h3>
+          <p class="my-4 text-slate-600">A responsive portfolio built with HTML, Tailwind CSS, Vite and ScrollReveal.</p>
+          <a class="font-semibold text-teal-700 underline" href="https://github.com/Tl4826/web-design">Source code</a>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section id="skills" class="bg-slate-50 px-6 py-20">
+    <div class="mx-auto max-w-5xl">
+      <h2 class="section-title mb-10 text-center text-3xl font-bold uppercase sm:text-4xl">Skills</h2>
+      <ul class="section-content flex flex-wrap justify-center gap-3">
+        <li class="rounded-full bg-white px-5 py-3 shadow-sm">HTML5</li><li class="rounded-full bg-white px-5 py-3 shadow-sm">CSS3</li><li class="rounded-full bg-white px-5 py-3 shadow-sm">JavaScript</li><li class="rounded-full bg-white px-5 py-3 shadow-sm">Tailwind CSS</li><li class="rounded-full bg-white px-5 py-3 shadow-sm">Git &amp; GitHub</li><li class="rounded-full bg-white px-5 py-3 shadow-sm">Vite</li>
+      </ul>
+    </div>
+  </section>
+  <section id="contact" class="px-6 py-24 text-center">
+    <h2 class="section-title mb-6 text-3xl font-bold uppercase sm:text-4xl">Contact</h2>
+    <p class="section-content mx-auto mb-8 max-w-xl text-lg text-slate-600">Interested in my learning projects? Explore my work and connect through GitHub.</p>
+    <a class="section-content inline-block bg-teal-700 px-8 py-3 font-semibold text-white transition hover:bg-teal-800" href="https://github.com/Tl4826">Visit my GitHub</a>
+  </section>
+</main>
+<footer class="bg-slate-900 px-6 py-12 text-center text-slate-300">
+  <a class="font-semibold text-white hover:underline" href="https://github.com/Tl4826">GitHub</a>
+  <hr class="mx-auto my-6 max-w-xs border-slate-700"><p>© 2026 Thanh · Web Design and Development</p>
+  <a class="mt-4 inline-block text-teal-300 hover:underline" href="#home">Back to top</a>
+</footer>
+<script type="module" src="/src/scripts/application.js"></script>
 </body>
 </html>
