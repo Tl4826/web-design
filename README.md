@@ -24,4 +24,7 @@ The production output is `dist/`. Enable GitHub Actions as the Pages source in S
 - Add a personal CV, portrait and contact details if desired; none are invented.
 
 ## Lab 5 – Next.js
-Pending the two-part assignment instructions; not marked complete.
+- [Part 1: Pages Router blog](lab5/part1-pages-router/README.md)
+- [Part 2: App Router financial dashboard](lab5/part2-dashboard-app/README.md)
+
+See [Lab 5 overview](lab5/README.md) for scope and verification. Each project runs separately from Lab 4. The dashboard needs PostgreSQL and environment configuration; review CI results before submission.

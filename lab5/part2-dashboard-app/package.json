@@ -1,0 +1,25 @@
+{
+  "name": "lab5-dashboard",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "seed": "node --env-file=.env.local scripts/seed.mjs"
+  },
+  "dependencies": {
+    "next": "^16.0.10",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "next-auth": "5.0.0-beta.30",
+    "postgres": "^3.4.7",
+    "bcryptjs": "^3.0.2",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.1.0",
+    "@tailwindcss/postcss": "^4.1.0",
+    "postcss": "^8.5.0"
+  }
+}

@@ -1,33 +1,14 @@
-# Lab 5 — Next.js practice starter
+# Lab 5 — Build websites with Next.js
 
-**Status: provisional starter, not a completed assignment.** The original two-part lab instructions at https://basic.web-programming.io.vn/labs/lab5__build_website_with_nextjs/ could not be retrieved. The routes and design here are illustrative, not verified requirements. Compare with the lecturer's instructions before submitting.
+Two independent practice projects based on the official Next.js Learn courses:
 
-## Start locally
+| Project | Course | Directory |
+| --- | --- | --- |
+| Part 1: Blog | [Pages Router](https://nextjs.org/learn/pages-router) | `part1-pages-router/` |
+| Part 2: Acme dashboard | [Dashboard App Router](https://nextjs.org/learn/dashboard-app) | `part2-dashboard-app/` |
 
-Use Node.js 22 or newer.
+Use Node.js 22. Run each project from its own directory. See their individual README files for setup, database configuration and test instructions.
 
-```sh
-cd lab5
-npm install
-npm run dev
-```
+The earlier files directly under lab5/ are retained as a preliminary practice starter for history; the two directories above are the actual Lab 5 implementation. The dashboard requires a PostgreSQL database and local environment values. Neither course's interactive progress nor a verified deployment is claimed. The dashboard is an independently written JavaScript adaptation, not a verbatim copy of the course TypeScript starter.
 
-Open http://localhost:3000. To check production compilation, run `npm run build`, then `npm run start`.
-
-## What to study
-
-- App Router: app/page.js, app/about/page.js and app/projects/page.js create URL routes.
-- Root layout: app/layout.js wraps every page.
-- Components: Header, Footer and ProjectCard are reused.
-- Props: ProjectCard receives project data from the parent component.
-- CSS: app/globals.css sets typography, responsive layout and focus styles.
-
-## Verification
-
-- [ ] Obtain and compare Part 1 and Part 2 instructions.
-- [ ] Add any missing assignment-specific features.
-- [ ] Install dependencies and commit the generated package-lock.json.
-- [ ] Run production build and check all three routes.
-- [ ] Confirm the deployment method required by the lecturer.
-
-Lab 4 is kept separate from this folder.
+GitHub Actions checks both projects and uses an isolated PostgreSQL service for dashboard smoke checks. Review the Actions results before submission.

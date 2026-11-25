@@ -1,6 +1,11 @@
-name: Lab 5 build check
+name: Lab 5 build and smoke checks
 on:
   pull_request:
+    paths:
+      - 'lab5/**'
+      - '.github/workflows/lab5-check.yml'
+  push:
+    branches: [main]
     paths:
       - 'lab5/**'
       - '.github/workflows/lab5-check.yml'
@@ -8,11 +13,11 @@ on:
 permissions:
   contents: read
 jobs:
-  build:
+  pages-router:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: lab5
+        working-directory: lab5/part1-pages-router
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -20,3 +25,57 @@ jobs:
           node-version: 22
       - run: npm install
       - run: npm run build
+      - name: Smoke test
+        run: |
+          npm run start -- --port 3001 > /tmp/blog.log 2>&1 &
+          trap 'kill $(jobs -p) 2>/dev/null || true' EXIT
+          curl --retry 20 --retry-connrefused --retry-delay 1 -fsS http://localhost:3001/ > /tmp/blog-home.html
+          grep -q 'Learning static generation' /tmp/blog-home.html
+          curl -fsS http://localhost:3001/posts/static-generation > /dev/null
+          curl -fsS http://localhost:3001/server-time > /dev/null
+          curl -fsS http://localhost:3001/api/hello | grep -q 'Hello'
+  dashboard-app:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: lab5/part2-dashboard-app
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: lab
+          POSTGRES_PASSWORD: lab-ci-only
+          POSTGRES_DB: lab5
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      POSTGRES_URL: postgres://lab:lab-ci-only@localhost:5432/lab5
+      AUTH_SECRET: local-ci-only-example-secret-1234567890
+      AUTH_TRUST_HOST: 'true'
+      DEMO_EMAIL: student@example.test
+      DEMO_PASSWORD: ci-only-password
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - name: Seed isolated database
+        run: |
+          touch .env.local
+          npm run seed
+      - run: npm run build
+      - name: Smoke test public and protected routes
+        run: |
+          npm run start -- --port 3002 > /tmp/dashboard.log 2>&1 &
+          trap 'kill $(jobs -p) 2>/dev/null || true' EXIT
+          curl --retry 20 --retry-connrefused --retry-delay 1 -fsS http://localhost:3002/ > /tmp/dashboard-home.html
+          grep -q 'Acme' /tmp/dashboard-home.html
+          curl -fsS http://localhost:3002/login > /dev/null
+          code=$(curl -s -o /dev/null -w '%{http_code}' http://localhost:3002/dashboard)
+          case "$code" in 302|303|307|308) ;; *) echo "Expected login redirect, got $code"; exit 1;; esac
